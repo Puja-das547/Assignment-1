@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class BankAccount {
+        constructor(accountNumber, ownerName, balance) {
+            this.accountNumber = accountNumber;
+            this.ownerName = ownerName;
+            this.balance = balance;
+        }
+    
+        deposit(amount) {
+            this.balance = this.balance + amount;
+            console.log("Deposited $"+amount+" into account "+this.accountNumber);
+        }
+    
+        withdraw(amount) {
+            if (amount > this.balance) {
+                console.log("Insufficient balance");
+            } else {
+                this.balance = this.balance - amount;
+                console.log("Withdrawn $"+amount+" into account "+this.accountNumber);
+            }
+        }
+    
+        getBalance() {
+            return this.balance;
+        }
+    
+        displayAccountInfo() {
+            console.log("Account Number: "+ this.accountNumber);
+            console.log("Owner Name: "+this.ownerName);
+            console.log("Balance: $"+this.balance);
+        }
+    }
+    
+    // Creating instances of BankAccount
+    
+    const account = new BankAccount(1001, 'Jane Smith', 700);
+    
+    // Demonstrating functionality
+    console.log("Initial Account Information:");
+    account.displayAccountInfo();
+    console.log("\n");
+    
+    console.log("Deposited and Withdrawn:");
+    account.deposit(100);
+    account.withdraw(500);
+    account.withdraw(700); // Should show "Insufficient funds"
+    console.log("\n");
+    
+    console.log("Updated Account Information:");
+    account.displayAccountInfo();
+    
+    </script>
+</body>
+</html>
